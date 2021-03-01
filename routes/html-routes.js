@@ -14,5 +14,5 @@ module.exports = (app) => {
     app.get("/stats", (req,res) => {
         res.sendFile(path.join(__dirname, "../public/html/stats.html"));
     });
-    
+
 }
