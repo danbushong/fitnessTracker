@@ -29,7 +29,7 @@ mongoose.connect(
 require("./routes/api-routes")(app);
 require("./routes/html-routes")(app);
 //can prob get rid of this after first use
-require('./seeders/seed');
+// require('./seeders/seed');
 
 app.listen(PORT, () => {
     console.log(`It is running on port ${PORT}..`);
