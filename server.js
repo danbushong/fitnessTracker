@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-const PORT = process.env.MONGODB_URI || 27017;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -16,11 +16,16 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true , useCreateIndex: true, useUnifiedTopology: true });
+
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
 
 
 
-require("./seeders/seed.js")
+// require("./seeders/seed.js")
 
 require('./routes/api-routes')(app)
 
