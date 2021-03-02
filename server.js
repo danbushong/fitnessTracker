@@ -2,7 +2,9 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-const PORT = process.env.PORT || 3000;
+//the port works for the local host
+
+const PORT = process.env.PORT || 27017;
 
 const app = express();
 
@@ -15,9 +17,9 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+//the localhost is recieving info, it is just wrong
 
-
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittrack", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittracker", {useNewUrlParser: true});
 
 
 
