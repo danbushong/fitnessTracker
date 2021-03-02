@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { use
 
 
 
-
+require("./seeders/seed.js")
 
 require('./routes/api-routes')(app)
 
