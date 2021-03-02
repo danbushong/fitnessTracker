@@ -16,13 +16,14 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittrack", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://dan-admin:Durango11790@cluster0.ufqj5.mongodb.net/fittracker?retryWrites=true&w=majority", {useNewUrlParser: true});
 
 
 
 require('./routes/api-routes')(app)
 
 require('./routes/html-routes')(app)
+
 
 
 app.listen(PORT, () => {
