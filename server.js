@@ -19,15 +19,7 @@ app.use(express.static("public"));
 
 //the localhost is recieving info, it is just wrong
 
-mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/fittracker',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
-    }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittracker", {useNewUrlParser: true});
 
 
 
