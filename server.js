@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 27017;
 
 const app = express();
 
@@ -20,9 +20,12 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittrack", {use
 
 
 
+
+
 require('./routes/api-routes')(app)
 
 require('./routes/html-routes')(app)
+
 
 
 
