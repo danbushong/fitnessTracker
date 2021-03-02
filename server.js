@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-const PORT = process.env.MONGODB_URI;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -16,17 +16,8 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-const MongoClient = require('mongodb').MongoClient;
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittrack", {useNewUrlParser: true});
 
-const uri = "mongodb+srv://dan-admin:Durango11790>@cluster0.ufqj5.mongodb.net/fittracker?retryWrites=true&w=majority";
-
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
 
 
 require('./routes/api-routes')(app)
@@ -35,3 +26,6 @@ require('./routes/html-routes')(app)
 
 
 
+app.listen(PORT, () => {
+    console.log(`App running on port ${PORT}..`);
+})
