@@ -2,15 +2,9 @@ const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-// const PORT = process.env.PORT || 8080;
-
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useFindAndModify: false
-});
+const PORT = process.env.PORT || 3000;
 
 const app = express();
-
 
 app.use(logger("dev"));
 
@@ -23,10 +17,7 @@ app.use(express.static("public"));
 
 
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittrack", {useNewUrlParser: true});
 
 
 
@@ -35,8 +26,6 @@ mongoose.connect(process.env.MONGODB_URI, {
 require('./routes/api-routes')(app)
 
 require('./routes/html-routes')(app)
-
-
 
 
 app.listen(PORT, () => {
