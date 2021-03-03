@@ -33,13 +33,15 @@ const WorkoutSchema = new Schema({
       distance: {
         type: Number,
         default: 0
+      },
+      totalDuration: {
+        type: Number,
+        default: 0,
       }
+
     }
-  ],
-  totalDuration: {
-    type: Number,
-    default: 0,
-  }
+  ]
+  
 
 });
 
