@@ -19,16 +19,8 @@ app.use(express.static("public"));
 
 //no mongodb add ons are free
 
-const MONGODB_URI = 'mongodb+srv://dan-admin:Merrychristmas@cluster0.ufqj5.mongodb.net/fittracker?retryWrites=true&w=majority'
 
-mongoose.connect(MONGODB_URI || "mongodb://localhost/fittracker", {useNewUrlParser: true,});
-
-mongoose.connection.on('connected', () => {
-    console.log("MONGOOSE IS CONNECTED!!!!!")
-})
-
-
-
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittracker", {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 // require("./seeders/seed.js")
