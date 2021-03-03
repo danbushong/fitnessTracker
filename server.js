@@ -17,8 +17,6 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-//no mongodb add ons are free
-
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittracker", {useNewUrlParser: true, useUnifiedTopology: true});
 
