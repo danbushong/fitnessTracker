@@ -17,14 +17,20 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-//the localhost is recieving info, it is just wrong
+//no mongodb add ons are free
 
+const MONGODB_URI = 'mongodb+srv://dan-admin:Merrychristmas@cluster0.ufqj5.mongodb.net/fittracker?retryWrites=true&w=majority'
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittracker", {useNewUrlParser: true});
+mongoose.connect(MONGODB_URI || "mongodb://localhost/fittracker", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 mongoose.connection.on('connected', () => {
     console.log("MONGOOSE IS CONNECTED!!!!!")
 })
+
+
 
 
 
