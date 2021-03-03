@@ -21,7 +21,7 @@ app.use(express.static("public"));
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fittracker", {useNewUrlParser: true, useUnifiedTopology: true});
 
 
-// require("./seeders/seed.js")
+require("./seeders/seed.js")
 
 require('./routes/api-routes')(app)
 
